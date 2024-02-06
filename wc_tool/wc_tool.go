@@ -8,6 +8,8 @@ import (
 
 func Wc() {
 
+
+	
 	file, _ := os.ReadFile("test.txt")
 	fmt.Println(len(file))
 	fileStr := string(file)
