@@ -1,49 +1,45 @@
 package wc_tool
 
 import (
-	"flag"
 	"fmt"
 	"os"
 	"strings"
 	"unicode/utf8"
 )
 
-// TODO: Can use binary search to fasten it more.
 func Wc() {
 
-	bytesArg := "c"
-	linesArg := "l"
-	wordArg := "w"
-	characterArg := "m"
+	args := os.Args[1:]
 
-	args := flag.String(bytesArg, "", "Args to the wc command")
-	fileName := flag.Arg(1)
-	file, _ := os.ReadFile(fileName)
+	fileName := "test.txt"
+	option := ""
+
+	if len(args) == 2 {
+		option = args[0]
+		fileName = args[1]
+	} else if len(args) == 1 {
+		fileName = args[0]
+	}
+
+	file, err := os.ReadFile(fileName)
+	if err != nil {
+		panic(err.Error())
+	}
 	fileStr := string(file)
 
-	fmt.Println(flag.Args())
-
-	newLineCount := strings.Count(fileStr, "\r\n")
-	fmt.Println(newLineCount)
-
-	wordCount := len(strings.Fields(fileStr))
-	fmt.Println(wordCount)
-
-	fmt.Println(utf8.RuneCountInString(fileStr))
-
-	switch *args {
-	case bytesArg:
+	switch option {
+	case "-c":
 		fmt.Println(len(file))
 
-	case linesArg:
+	case "-l":
 		newLineCount := strings.Count(fileStr, "\r\n")
 		fmt.Println(newLineCount)
 
-	case wordArg:
+	case "-w":
 		wordCount := len(strings.Fields(fileStr))
 		fmt.Println(wordCount)
 
-	case characterArg:
+	case "-m":
 		fmt.Println(utf8.RuneCountInString(fileStr))
 
 	default:
