@@ -34,7 +34,7 @@ func Wc() {
 
 	if len(args) > 0 {
 		filePath = args[0]
-		_, fileStr = readFIle(filePath)
+		_, fileStr = ReadFIle(filePath)
 	} else {
 		stdin, err := io.ReadAll(os.Stdin)
 		if err != nil {
@@ -46,25 +46,25 @@ func Wc() {
 
 	switch {
 	case *noOfBytes:
-		fmt.Println(calculateNoOfBytes(fileStr))
+		fmt.Println(CalculateNoOfBytes(fileStr))
 
 	case *noOfLines:
-		fmt.Println(calculateNoOfLines(fileStr))
+		fmt.Println(CalculateNoOfLines(fileStr))
 
 	case *noOfWords:
-		fmt.Println(calculateNoOfWords(fileStr))
+		fmt.Println(CalculateNoOfWords(fileStr))
 
 	case *noOfCharacter:
-		fmt.Println(calculateNoOfCharacter(fileStr))
+		fmt.Println(CalculateNoOfCharacter(fileStr))
 
 	default:
-		fmt.Println(calculateNoOfBytes(fileStr))
+		fmt.Println(CalculateNoOfBytes(fileStr))
 
-		fmt.Println(calculateNoOfLines(fileStr))
+		fmt.Println(CalculateNoOfLines(fileStr))
 
-		fmt.Println(calculateNoOfWords(fileStr))
+		fmt.Println(CalculateNoOfWords(fileStr))
 
-		fmt.Println(calculateNoOfCharacter(fileStr))
+		fmt.Println(CalculateNoOfCharacter(fileStr))
 	}
 
 	if len(args) > 0 {
@@ -73,26 +73,26 @@ func Wc() {
 
 }
 
-func calculateNoOfCharacter(filestr string) int {
+func CalculateNoOfCharacter(filestr string) int {
 	return utf8.RuneCountInString(filestr)
 }
 
-func calculateNoOfWords(fileStr string) int {
+func CalculateNoOfWords(fileStr string) int {
 	wordCount := len(strings.Fields(fileStr))
 	return wordCount
 }
 
-func calculateNoOfBytes(fileStr string) int {
+func CalculateNoOfBytes(fileStr string) int {
 	return len(fileStr)
 }
 
-func calculateNoOfLines(filestr string) int {
+func CalculateNoOfLines(filestr string) int {
 	newLineCount := strings.Count(filestr, "\r\n")
 	return newLineCount
 
 }
 
-func readFIle(fileName string) ([]byte, string) {
+func ReadFIle(fileName string) ([]byte, string) {
 
 	var fileStr string
 
