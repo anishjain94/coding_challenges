@@ -1,9 +1,21 @@
-This challenge is to build your own version of the Unix command line tool wc!
+`wc_tool` is a Go package that performs word count operations on a file.
+It provides functionality to count the number of bytes, lines, words, and characters in a file.
 
-The Unix command line tools are a great metaphor for good software engineering and they follow the Unix Philosophies of:
+## Usage
 
-Writing simple parts connected by clean interfaces - each tool does just one thing and provides a simple CLI that handles text input from either files or file streams.
-Design programs to be connected to other programs - each tool can be easily connected to other tools to create incredibly powerful compositions.
-Following these philosophies has made the simple unix command line tools some of the most widely used software engineering tools - allowing us to create very complex text data processing pipelines from simple command line tools. There’s even a Coursera course on Linux and Bash for Data Engineering.
+To use `wc_tool`, you need to provide command line arguments to specify the file and the operation to be performed. The supported options are:
 
+- `-c`: Count the number of bytes in the file.
+- `-l`: Count the number of lines in the file.
+- `-w`: Count the number of words in the file.
+- `-m`: Count the number of characters in the file.
 
+If no option is provided, it counts the number of bytes, lines, words, and characters in the file.
+
+## Build Command
+
+`go build main.go`
+
+## Run
+
+`./main test.txt`
