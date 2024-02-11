@@ -1,5 +1,5 @@
 build:
-	go build -o bin/wc main.go
+	go build -o bin/ccwc main.go
 
 clean:
 	rm -rf bin/
